@@ -15,7 +15,7 @@ import os
 import glob
 # image_path=sys.argv[1]
 # img = img_as_float(astronaut()[::2, ::2])
-files=glob.glob("/home/user/project/demo/pic/*.jpg")
+files=glob.glob("/path/pic/*.jpg")
 for image_path in files:
 	img = skimage.io.imread(image_path)
 	segments_fz = felzenszwalb(img, scale=600, sigma=0.8, min_size=100)
@@ -52,20 +52,7 @@ for image_path in files:
 			# print segments	_fz[i][j]
 	# imc.show()
 	head,tail = os.path.split(image_path)
-	path1="/home/user/project/demo/segments/"+tail
+	path1="/path/segments/"+tail
 	imc.save(path1)
 
-	# print len(segments_fz)
 
-	# fig, ax = plt.subplots(2, 2, figsize=(10, 10), sharex=True, sharey=True,subplot_kw={'adjustable': 'box-forced'})
-
-	# ax[0, 0].imshow(mark_boundaries(img, segments_fz))
-	# # print segments_fz
-	# ax[0, 0].set_title("Felzenszwalbs's method")
-
-
-	# for a in ax.ravel():
-	#     a.set_axis_off()
-
-	# plt.tight_layout()
-	# plt.show()

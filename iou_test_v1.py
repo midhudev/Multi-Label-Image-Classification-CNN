@@ -72,9 +72,7 @@ def main(image_path):
     list=[]
     # loading astronaut image
     img = skimage.io.imread(image_path)
-    #img = skimage.io.imread('/home/user/000654.jpg')
-    #img = skimage.data.lenna()
-    #img = '/home/a.jpg'
+
     ct=0
     # perform selective search
     # img_lbl, regions = selectivesearch.selective_search(img, scale=100, sigma=.9, min_size=200)
@@ -253,25 +251,6 @@ def compute_single_labeled(files):
         width,height=im.size # (width,height) tuple
 
 
-        # p3='deploy.prototxt'
-        # p4='nin_imagenet_conv.caffemodel'
-        # p5='imagenet_mean.binaryproto'
-
-        # p6='labels_map.txt'
-        # p7=image_path
-
-
-        # # os.system(p1)
-        # # ct+=1
-        # print "**********************************************************************************************************************************************\n"
-        # print "computing...."
-        # start_time = timeit.default_timer()
-        # pd = subprocess.Popen([p2,p3,p4,p5,p6,p7], stdout=subprocess.PIPE)
-        # out,err=pd.communicate()
-        # # print out
-        # import re
-        # # x=out.split('""')
-        # x=re.findall(r"['\"](.*?)['\"]", out)
         p1='python'
         p2='d.py'
 
@@ -338,11 +317,11 @@ def compute_single_labeled(files):
             'p({} | box) >= {:.1f}').format(name, name,
             thresh),fontsize=20)
         plt.show()
-        # out_file = "/home/user/Dropbox/project/{0}.png".format(input_file_name)
+        # out_file = "/path/Dropbox/project/{0}.png".format(input_file_name)
 
         # delete_similr = "__delete_similr" if DELETE_SIMILR_INCLUDE else ''
         ax.imshow(im)
-        out_file = "/home/user/project/demo/output/{0}".format(
+        out_file = "/path/project/demo/output/{0}".format(
             # SELECTIVESEARCH_SCALE,
             # SELECTIVESEARCH_SIGMA,
             # SELECTIVESEARCH_MIN_SIZE,
@@ -356,24 +335,19 @@ def compute_single_labeled(files):
 
 
 if __name__ == "__main__":
-    #files = glob.glob('/home/user/pictures/pic/*.jpg')
-    #for image_path in files:
-    # image_path='/home/user/Dropbox/project/000035.jpg'
+
     j=1
     arg=0
     if len(sys.argv)==1:
-        files = glob.glob('/home/user/project/demo/pic/*.jpg')
+        files = glob.glob('/path/project/demo/pic/*.jpg')
     else:
-        files = glob.glob('/home/user/project/demo/pic1/*.jpg')
+        files = glob.glob('/path/project/demo/pic1/*.jpg')
         arg=1
         compute_single_labeled(files)
     if arg==0:
         for image_path in files:
             head,tail = os.path.split(image_path)
-            # main(image_path)
-            # image_path='/home/user/Desktop/pic/000740.jpg'
-
-
+ 
             print "Getting bboxes ......... ."
 
 
@@ -384,7 +358,7 @@ if __name__ == "__main__":
             start_time = timeit.default_timer()
 
             cd,cd1=main(image_path)
-            path1="/home/user/project/demo/result/{0}/".format(tail)
+            path1="/path/project/demo/result/{0}/".format(tail)
 
             dirname = os.path.dirname(path1)
             if not os.path.exists(dirname):
@@ -425,16 +399,9 @@ if __name__ == "__main__":
                 p3='--image_file'
                 p4=img_path
                 p5='2>&1|tail'
-                # p6='|'
-                # p7='tail'
+
                 p8='-1'
 
-                # p6='labels_map.txt'
-                # p7=img_path
-
-
-                # os.system(p1)
-                # ct+=1
                 print "**********************************************************************************************************************************************\n"
                 # print p1
                 
@@ -443,8 +410,6 @@ if __name__ == "__main__":
                 # print out
                 import re
                 x=out.split('\n')
-                # x=re.findall(r"['\"](.*?)['\"]", out)
-                # code you want to evaluate
                 
                 print x
 
@@ -463,7 +428,6 @@ if __name__ == "__main__":
                     fn=int(split_pt[0])-(ct-ct2)
                     print "in second",fn
 
-                    # visualize(cd[fn],cd[fn+1],cd[fn+2],cd[fn+3],image_path)
                     x=cd1[fn*4]
                     y=cd1[(fn*4)+1]
                     w=cd1[(fn*4)+2]-x
@@ -510,11 +474,11 @@ if __name__ == "__main__":
                 'p({} | box) >= {:.1f}').format(name, name,
                 thresh),fontsize=20)
             plt.show()
-            # out_file = "/home/user/Dropbox/project/{0}.png".format(input_file_name)
+            # out_file = "/path/Dropbox/project/{0}.png".format(input_file_name)
 
             # delete_similr = "__delete_similr" if DELETE_SIMILR_INCLUDE else ''
             ax.imshow(im)
-            out_file = "/home/user/project/demo/output/{0}".format(
+            out_file = "/path/project/demo/output/{0}".format(
                 # SELECTIVESEARCH_SCALE,
                 # SELECTIVESEARCH_SIGMA,
                 # SELECTIVESEARCH_MIN_SIZE,
